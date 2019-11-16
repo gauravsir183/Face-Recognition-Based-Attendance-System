@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Jun 17 2018
+Created on 11/16/2019
 
-@author: Ashish Kumar
+@author: Gaurav Singh
 """
 
 import tkinter as tk
@@ -111,7 +111,7 @@ def TrainImages():
     detector =cv2.CascadeClassifier(harcascadePath)
     faces,Id = getImagesAndLabels("TrainingImage")
     recognizer.train(faces, np.array(Id))
-    recognizer.save("TrainingImageLabel\Trainner.yml")
+    recognizer.save("TrainingImageLabel\Trainer.yml")
     res = "Image Trained for id : "+",".join(str(f) for f in Id)
     message.configure(text= res)
 
@@ -139,7 +139,7 @@ def getImagesAndLabels(path):
 
 def TrackImages():
     recognizer = cv2.face.LBPHFaceRecognizer_create()#cv2.createLBPHFaceRecognizer()
-    recognizer.read("TrainingImageLabel\Trainner.yml")
+    recognizer.read("TrainingImageLabel\Trainer.yml")
     harcascadePath = "haarcascade_frontalface_default.xml"
     faceCascade = cv2.CascadeClassifier(harcascadePath);    
     df=pd.read_csv("StudentDetails\StudentDetails.csv")
@@ -197,7 +197,7 @@ quitWindow = tk.Button(window, text="Quit", command=window.destroy)
 quitWindow.place(x=253, y=100)
 copyWrite = tk.Text(window, background=window.cget("background"), borderwidth=0,)
 copyWrite.tag_configure("superscript", offset=4)
-copyWrite.insert("insert", "Developed by ASHISH","", "TEAM", "superscript")
+copyWrite.insert("insert", "Developed by Gaurav Singh","", "TM", "superscript")
 copyWrite.configure(state="disabled")
 copyWrite.pack(side="top")
 copyWrite.place(x=75, y=150)
